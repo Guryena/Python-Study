@@ -1,3 +1,4 @@
+from datetime import datetime
 import random
 
 
@@ -138,3 +139,64 @@ fruitList = ['orange', 'mango', 'apple', 'orange']
 get_fruit(fruitList)
 print(isfruit('mango'))  # True 출력
 print(isfruit('Grapefruit '))  # False 출력
+print()
+
+def getSex(myNumber):
+    if myNumber[6] == "1" or myNumber[6] == "3":
+        return "Male"
+
+    elif myNumber[6] == "2" or myNumber[6] == "4":
+        return "Female"
+
+def getAge(myNumber):
+    nowYear = datetime.today().year
+    age = int(myNumber[0])*10 + int(myNumber[1])
+    if myNumber[6] == "1" or myNumber[6] == "2":
+        return nowYear - (age + 1900)
+
+    elif myNumber[6] == "3" or myNumber[6] == "4":
+        return nowYear- (age + 2000)
+
+def getArea(myNumber):
+    areaNumber = int(myNumber[7])
+    dicArea = {0:"서울", 1:"인천", 2:"경기", 3:"충청북도", 4:"충청남도",
+               5:"전라도", 6:"강원도", 7:"경상북도", 8:"경상남도", 9:"제주도"}
+    return dicArea[areaNumber]
+# 0 = 서울r
+# 1 = 인천/경기
+# 3, 4 = 충청도
+# 5 = 전라도
+# 7, 8 = 경상도
+# 9 = 제주도
+
+def createMyNumber():
+    myNumberList = []
+    count = 0
+    while (1):
+
+        num = random.randint(0, 9)
+        myNumberList.append(num)
+        if count == 2 and num > 1:
+            del myNumberList[count]
+            continue
+
+        elif count == 4 and num > 4:
+            del myNumberList[count]
+            continue
+
+        elif count == 6:
+            if num == 0 or num > 4:
+                del myNumberList[count]
+                continue
+
+        count += 1
+        if len(myNumberList) == 13:
+            break
+    print(myNumberList)
+    return myNumberList
+
+
+print(getSex(createMyNumber()))
+print(getAge(createMyNumber()))
+print(getArea(createMyNumber()))
+
