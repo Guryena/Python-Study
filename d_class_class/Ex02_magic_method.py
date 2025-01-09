@@ -31,11 +31,11 @@
         -=	    object.__isub__(self, other)
         *=	    object.__imul__(self, other)
         /=	    object.__idiv__(self, other)
-        //=	object.__ifloordiv__(self, other)
+        //=	    object.__ifloordiv__(self, other)
         %=	    object.__imod__(self, other)
-        **=	object.__ipow__(self, other[, modulo])
-        <<=	object.__ilshift__(self, other)
-        >>=	object.__irshift__(self, other)
+        **=	    object.__ipow__(self, other[, modulo])
+        <<=	    object.__ilshift__(self, other)
+        >>=	    object.__irshift__(self, other)
         &=	    object.__iand__(self, other)
         ^=	    object.__ixor__(self, other)
         |=	    object.__ior__(self, other)
@@ -53,3 +53,26 @@
         oct()	    object.__oct__(self)        
         hex()	    object.__hex__(self)
 """
+
+
+class Sample():
+    def __init__(self, name, age):
+        self.name = name
+        self.age = int(age)
+    def __str__(self):
+        return f"name : {self.name}\nage : {self.age}"
+    def __add__(self, other):
+        self.age += int(other)
+    def __ge__(self, other):
+        if self.age >= int(other):
+            return f"adult"
+        else:
+            return f"minor"
+
+s = Sample("a", "11")
+print(s)
+
+s +11
+print(s)
+
+print(s>= 20)
