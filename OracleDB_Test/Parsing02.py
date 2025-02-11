@@ -11,7 +11,7 @@ html = """
     </html>
 """
 # data parsing
-soup  =BeautifulSoup(html, 'html.parser')
+soup = BeautifulSoup(html, 'html.parser')
 
 # approach elements
 h1 = soup.html.body.h1
